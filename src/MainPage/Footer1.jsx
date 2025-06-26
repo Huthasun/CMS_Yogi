@@ -1,8 +1,9 @@
 import { Button, Container, Flex, Footer, Text } from '@mantine/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import facebookImage from '../../../assets/facebook-logo-facebook-icon-transparent-free-png.png';
-import instagramImage from '../../../assets/colored-instagram-logo-new.png';
+import facebookImage from '../assets/facebook-logo-facebook-icon-transparent-free-png.png';
+import instagramImage from '../assets/colored-instagram-logo-new.png';
+import gmail from '../assets/gmail-logo-main-icon-1.png'
 import { useMediaQuery } from '@mantine/hooks';
 
 const Footer1 = ({ openModal }) => {
@@ -13,7 +14,7 @@ const Footer1 = ({ openModal }) => {
         <Footer
             zIndex='revert'
             style={{
-                backgroundColor: '#FBD40B',
+                // backgroundColor: '#FBD40B',
                 minHeight: '9rem',
                 display: 'flex',
                 alignItems: 'center',
@@ -48,14 +49,14 @@ const Footer1 = ({ openModal }) => {
                         flexDirection: isMobile ? 'row' : 'row',
                     }}
                 >
-                    <Link to="https://www.facebook.com/people/Sai-Teja/100063960496461/?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer">
+                    <Link to="mailto:lakpathiwaryogesh@gmail.com" target="_blank" rel="noopener noreferrer">
                         <img
-                            src={facebookImage}
-                            alt="Facebook"
-                            style={{ width: '4.5rem', height: 'auto' }}
+                            src={'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico'}
+                            alt="Gmail"
+                            style={{ width: '3rem', height: 'auto' }}
                         />
                     </Link>
-                    <Link to="https://www.instagram.com/healthcoach_saiteja/?igshid=YmMyMTA2M2Y%3D" target="_blank" rel="noopener noreferrer">
+                    <Link to="https://www.instagram.com/yogawithyogiii?igsh=MTN5M3piZmkwenhrcA==" target="_blank" rel="noopener noreferrer">
                         <img
                             src={instagramImage}
                             alt="Instagram"
@@ -69,8 +70,8 @@ const Footer1 = ({ openModal }) => {
                     radius="xl"
                     size="xl"
                     style={{
-                        background: 'linear-gradient(90deg, #1F3469, #4A90E2, #1F3469)',
-                        backgroundSize: '200% 100%',
+                        background: 'linear-gradient(90deg, #2d5128, #6fbf73)',
+                        // backgroundSize: '200% 100%',
                         color: 'white',
                         padding: '1rem 2.5rem',
                         fontSize: '18px',
@@ -81,8 +82,8 @@ const Footer1 = ({ openModal }) => {
                         cursor: 'pointer',
                         backgroundPosition: '0% 50%',
                     }}
-                    onMouseEnter={(e) => (e.target.style.backgroundPosition = '100% 50%')}
-                    onMouseLeave={(e) => (e.target.style.backgroundPosition = '0% 50%')}
+                    // onMouseEnter={(e) => (e.target.style.backgroundPosition = '100% 50%')}
+                    // onMouseLeave={(e) => (e.target.style.backgroundPosition = '0% 50%')}
                     onClick={openModal}
                 >
                     Register Here

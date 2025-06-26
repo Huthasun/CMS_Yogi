@@ -25,7 +25,7 @@ const TestimonialCarousel = () => {
     const autoplay = useRef(Autoplay({ delay: 2000, }));
     return (
         <BackgroundImage
-            src='https://healthcoachsaiteja.com/wp-content/uploads/2022/11/1-scaled.jpg'
+            src='https://images.news18.com/ibnlive/uploads/2022/06/bhujangasana-1.jpg'
 
             style={{
                 height: '100vh',
@@ -38,7 +38,7 @@ const TestimonialCarousel = () => {
                 backgroundPosition: 'center'
             }}
         >
-            <Container size="lg" style={{ width: isMobile ? '100%' : "55%", }} mb={isMobile?'9rem':'none'} mt={isMobile?'7rem':'none'}>
+            <Container size="lg" style={{ width: isMobile ? '100%' : "55%", }} mb={isMobile ? '9rem' : 'none'} mt={isMobile ? '7rem' : 'none'}>
                 <Text
                     fz={isMobile ? '1.5rem' : '2.5rem'}
                     align='center'
@@ -49,7 +49,7 @@ const TestimonialCarousel = () => {
                     mt='4rem'
                     pt={isMobile ? '3rem' : '1rem'}
                 >
-                    CLIENTS ACROSS GLOBE
+                    EXPERIENCES THAT INSPIRE
                 </Text>
                 <Carousel slideSize="100%" align="center" loop
                     mb='5rem'
@@ -65,18 +65,18 @@ const TestimonialCarousel = () => {
                         <Card
                             shadow="sm"
                             p="xl"
-                           
+
                             radius="md"
                             style={{
-                                backgroundColor: "#223472",
+                                backgroundColor: "#2d5128",
                                 color: "white",
                                 textAlign: "center",
                                 position: "relative",
                                 width: isMobile ? "95%" : "100%",
                                 opacity: '0.8',
-                                margin: "auto",
+
                                 borderRadius: "10px",
-                                paddingTop: isMobile ? "60px" : "80px",
+                                // paddingTop: isMobile ? "60px" : "80px",
                                 paddingBottom: isMobile ? "50px" : "50px",
                                 minHeight: isMobile ? "200px" : "450px",
                                 display: "flex",
@@ -84,7 +84,7 @@ const TestimonialCarousel = () => {
                                 justifyContent: "center"
                             }}
                         >
-                            <Avatar
+                            {/* <Avatar
                                 src="https://healthcoachsaiteja.com/wp-content/uploads/2024/11/Sandeep_US-Client-254x300.jpg"
                                 size={isMobile ? 70 : 90}
                                 radius="50%"
@@ -112,14 +112,14 @@ const TestimonialCarousel = () => {
                                     backgroundColor: "white",
                                     objectFit: "cover",
                                 }}
-                            />
-                            <Text fw={700} size="lg" style={{ color: "yellow", marginTop: isMobile ? 30 : 40, fontFamily: '"Poppins", Sans-serif' }}>
+                            /> */}
+                            <Text fw={700} size="lg" style={{ color: "yellow", fontFamily: '"Poppins", Sans-serif' }}>
 
-                                Rakesh
+                                Shailendra Mehta
                             </Text>
-                            <Text size="sm" mb="md" c="gray.3" style={{ fontFamily: '"Poppins", Sans-serif' }}>
+                            {/* <Text size="sm" mb="md" c="gray.3" style={{ fontFamily: '"Poppins", Sans-serif' }}>
                                 Electrical Engineer, UK
-                            </Text>
+                            </Text> */}
                             <Text
                                 mt="xl"
                                 size="md"
@@ -132,9 +132,14 @@ const TestimonialCarousel = () => {
                                     color: "rgba(255, 255, 255, 0.8)",
                                 }}
                             >
-                                Thanks for guiding me through my transformation journey. The way you helped me achieve my goals was incredible. Initially, I just wanted to reduce my belly fat, but with your support, I ended up achieving a much better physique. Your diet and workout plans were great and easy to follow. You always pushed me forward and motivated me, even when I was dealing with professional challenges and considered taking a break from working out. Your encouragement kept me going.
+                                Dear Yogesh,
+                                I wanted to take a moment to express my gratitude for your guidance and support on this yoga journey. Your passion for yoga is truly inspiring, and your calm, patient approach has made every session not just a workout, but a transformative experience.
 
-                                Thanks for all the support and guidance.😊
+                                Through your teachings, I’ve not only grown stronger and more flexible physically, but I’ve also learned to find peace and balance within myself. You’ve shown me that yoga is so much more than poses—it’s a way of life, a path to mindfulness, and a tool for self-discovery.
+
+                                Thank you for sharing your knowledge, energy, and positivity. You’re not just a great yoga coach; you’re a mentor and a source of inspiration. I’m truly grateful to have you as my guide.
+
+                                Wishing you continued success and happiness on your own journey. Namaste!
                             </Text>
                             <Text
                                 style={{
@@ -157,16 +162,16 @@ const TestimonialCarousel = () => {
                             p="xl"
                             radius="md"
                             style={{
-                                backgroundColor: "#223472",
+                                backgroundColor: "#2d5128",
                                 color: "white",
                                 textAlign: "center",
                                 position: "relative",
                                 width: isMobile ? "95%" : "100%",
                                 opacity: '0.8',
                                 maxWidth: isMobile ? "100%" : "800px",
-                                margin: "auto",
+                                // margin: "auto",
                                 borderRadius: "10px",
-                                paddingTop: isMobile ? "60px" : "80px",
+                                // paddingTop: isMobile ? "60px" : "80px",
                                 paddingBottom: isMobile ? "40px" : "50px",
                                 minHeight: isMobile ? "350px" : "450px", // Adjust height for mobile
                                 display: "flex",
@@ -174,7 +179,7 @@ const TestimonialCarousel = () => {
                                 justifyContent: "center"
                             }}
                         >
-                            <Avatar
+                            {/* <Avatar
                                 src="https://healthcoachsaiteja.com/wp-content/uploads/2024/11/Sandeep_US-Client-254x300.jpg"
                                 size={isMobile ? 70 : 90}
                                 radius="50%"
@@ -202,14 +207,14 @@ const TestimonialCarousel = () => {
                                     backgroundColor: "white",
                                     objectFit: "cover",
                                 }}
-                            />
+                            /> */}
                             <Text fw={700} size="lg" style={{ color: "yellow", marginTop: isMobile ? 30 : 40, fontFamily: '"Poppins", Sans-serif' }}>
 
-                                Sathish Kalluri
+                                Pawan sir
                             </Text>
-                            <Text size="sm" mb="md" c="gray.3" style={{ fontFamily: '"Poppins", Sans-serif' }}>
+                            {/* <Text size="sm" mb="md" c="gray.3" style={{ fontFamily: '"Poppins", Sans-serif' }}>
                                 Video Marketing Specialist, Hyderabad
-                            </Text>
+                            </Text> */}
                             <Text
                                 mt="xl"
                                 size="md"
@@ -222,8 +227,7 @@ const TestimonialCarousel = () => {
                                     color: "rgba(255, 255, 255, 0.8)",
                                 }}
                             >
-                                Hello everyone!
-                                I'm Sathish Kalluri, an entrepreneur based out of Hyderabad. I would like to share my experience with my health coach, Sai Teja. It's been 1 year since I have started taking training from him. The results are amazing and the best thing I found with Sai Teja is he understands our fitness goals and gives training and diet schedules accordingly. Now,  I'm feeling more lighter and quicker than before.
+                                Yogesh Sir is an exceptional yoga instructor, blending deep knowledge with a warm and encouraging teaching style. His sessions are not just about physical postures but also about inner peace, mindfulness, and overall well-being. He has a keen eye for detail, ensuring that every student perfects their asanas while also understanding their spiritual and health benefits. His patience, positivity, and dedication make every class a transformative experience. Learning from Yogesh Sir is not just about practicing yoga; it’s about embracing a healthier and more balanced lifestyle
                             </Text>
                             <Text
                                 style={{
@@ -245,16 +249,16 @@ const TestimonialCarousel = () => {
                             p="xl"
                             radius="md"
                             style={{
-                                backgroundColor: "#223472",
+                                backgroundColor: "#2d5128",
                                 color: "white",
                                 textAlign: "center",
                                 position: "relative",
                                 width: isMobile ? "95%" : "100%",
                                 opacity: '0.8',
                                 maxWidth: isMobile ? "100%" : "800px",
-                                margin: "auto",
+                                // margin: "auto",
                                 borderRadius: "10px",
-                                paddingTop: isMobile ? "60px" : "80px",
+                                // paddingTop: isMobile ? "60px" : "80px",
                                 paddingBottom: isMobile ? "40px" : "50px",
                                 minHeight: isMobile ? "350px" : "450px", // Adjust height for mobile
                                 display: "flex",
@@ -262,7 +266,7 @@ const TestimonialCarousel = () => {
                                 justifyContent: "center"
                             }}
                         >
-                            <Avatar
+                            {/* <Avatar
                                 src="https://healthcoachsaiteja.com/wp-content/uploads/2024/11/Sandeep_US-Client-254x300.jpg"
                                 size={isMobile ? 70 : 90}
                                 radius="50%"
@@ -290,14 +294,14 @@ const TestimonialCarousel = () => {
                                     backgroundColor: "white",
                                     objectFit: "cover",
                                 }}
-                            />
+                            /> */}
                             <Text fw={700} size="lg" style={{ color: "yellow", marginTop: isMobile ? 30 : 40, fontFamily: '"Poppins", Sans-serif' }}>
 
-                                Kiranmayi
+                                Purooshottam sir
                             </Text>
-                            <Text size="sm" mb="md" c="gray.3" style={{ fontFamily: '"Poppins", Sans-serif' }}>
+                            {/* <Text size="sm" mb="md" c="gray.3" style={{ fontFamily: '"Poppins", Sans-serif' }}>
                                 Home maker, Alberta, Canada
-                            </Text>
+                            </Text> */}
                             <Text
                                 mt="xl"
                                 size="md"
@@ -310,8 +314,7 @@ const TestimonialCarousel = () => {
                                     color: "rgba(255, 255, 255, 0.8)",
                                 }}
                             >
-                                Being fit and strong changes the whole game of motherhood, especially in the initial post partum years. It is hard to find the right motivation and company to put this thought into practicality. For me, Teja was the perfect fitness buddy. It is indeed rare to find someone like him who is knowledgeable and knows what he is doing. He sets realistic goals and achievable targets. He has played a key role in changing how I think about food, eating habits, and how I feel about going to the gym. Such trainers who work on both the body and mindset of clients are rare. He helped me correct my posture, reduce body fat percentage, tone down my body and improve my muscular strength. The end result was a loss of 9kg weight and a massive gain in confidence and energy. I'm now feeling better than ever!! I highly recommend Sai Teja as anyone's fitness buddy&nbsp;and&nbsp;trainer.
-                            </Text>
+                                Yogesh Sir is a truly inspiring yoga teacher, guiding his students with wisdom, patience, and dedication. His deep understanding of yoga goes beyond just physical postures—he incorporates breathwork, meditation, and philosophy to create a holistic experience. His calm demeanor and encouraging nature make every session enjoyable and enriching. Whether you are a beginner or an advanced practitioner, he tailors his teaching to suit individual needs, helping each student grow on their yoga journey. Under his guidance, yoga becomes more than just an exercise—it becomes a way of life, bringing peace, strength, and harmony to the body and mind.                            </Text>
                             <Text
                                 style={{
                                     position: "absolute",
@@ -332,16 +335,16 @@ const TestimonialCarousel = () => {
                             p="xl"
                             radius="md"
                             style={{
-                                backgroundColor: "#223472",
+                                backgroundColor: "#2d5128",
                                 color: "white",
                                 textAlign: "center",
                                 position: "relative",
                                 width: isMobile ? "95%" : "100%",
                                 opacity: '0.8',
                                 maxWidth: isMobile ? "100%" : "800px",
-                                margin: "auto",
+                                // margin: "auto",
                                 borderRadius: "10px",
-                                paddingTop: isMobile ? "60px" : "80px",
+                                // paddingTop: isMobile ? "60px" : "80px",
                                 paddingBottom: isMobile ? "40px" : "50px",
                                 minHeight: isMobile ? "350px" : "450px", // Adjust height for mobile
                                 display: "flex",
@@ -349,7 +352,7 @@ const TestimonialCarousel = () => {
                                 justifyContent: "center"
                             }}
                         >
-                            <Avatar
+                            {/* <Avatar
                                 src="https://healthcoachsaiteja.com/wp-content/uploads/2024/11/Sandeep_US-Client-254x300.jpg"
                                 size={isMobile ? 70 : 90}
                                 radius="50%"
@@ -377,14 +380,14 @@ const TestimonialCarousel = () => {
                                     backgroundColor: "white",
                                     objectFit: "cover",
                                 }}
-                            />
-                            <Text fw={700} size="lg" style={{ color: "yellow", marginTop: isMobile ? 30 : 40, fontFamily: '"Poppins", Sans-serif' }}>
+                            /> */}
+                            {/* <Text fw={700} size="lg" style={{ color: "yellow", marginTop: isMobile ? 30 : 40, fontFamily: '"Poppins", Sans-serif' }}>
 
                                 Ethan
-                            </Text>
-                            <Text size="sm" mb="md" c="gray.3" style={{ fontFamily: '"Poppins", Sans-serif' }}>
+                            </Text> */}
+                            {/* <Text size="sm" mb="md" c="gray.3" style={{ fontFamily: '"Poppins", Sans-serif' }}>
                                 Class 6 student
-                            </Text>
+                            </Text> */}
                             <Text
                                 mt="xl"
                                 size="md"
@@ -397,8 +400,9 @@ const TestimonialCarousel = () => {
                                     color: "rgba(255, 255, 255, 0.8)",
                                 }}
                             >
-                                Hi everyone, my name is Ethan. I am from class 6th and I am 10 years old. I have been training with coach Sai Teja for about 5 months now, which I feel like everyone my age should also do exercises to be fit and strong. Few different changes I felt were my increase in my speed and agility with a little bit extra strength. Thank you.
-                            </Text>
+                                Dear Yogesh Sir,
+
+                                I have fallen in love with yoga: I know I will always continue practicing now.  I have tried yoga a few times over the years and never felt a connection to it. I realise now it is all about the teacher as much as the practice. I have utter confidence in your knowledge and find your classes so stimulating and informative - I love that you describe what is happening in the body with each pose and what it is useful for. I also find your approach wonderful -  you inspire confidence, your instructions are so clear and you have such a calm and positive energy. And apart from that it's worth joining your class to see everyone smile  which is so warm and welcoming! So thank you very much for everything.                            </Text>
                             <Text
                                 style={{
                                     position: "absolute",
@@ -413,13 +417,13 @@ const TestimonialCarousel = () => {
                         </Card>
                     </Carousel.Slide>
 
-                    <Carousel.Slide>
+                    {/* <Carousel.Slide>
                         <Card
                             shadow="sm"
                             p="xl"
                             radius="md"
                             style={{
-                                backgroundColor: "#223472",
+                                backgroundColor: "#2d5128",
                                 color: "white",
                                 textAlign: "center",
                                 position: "relative",
@@ -498,10 +502,10 @@ const TestimonialCarousel = () => {
                                 ❝
                             </Text>
                         </Card>
-                    </Carousel.Slide>
+                    </Carousel.Slide> */}
                 </Carousel>
             </Container>
-        </BackgroundImage>
+        </BackgroundImage >
     );
 };
 

@@ -1,20 +1,21 @@
-import { AspectRatio, Badge, Button, CardSection, Group, BackgroundImage, Modal, Box, TextInput, NumberInput, Radio, Textarea, Select } from '@mantine/core';
+import { AspectRatio, Badge, Button, CardSection, Group, BackgroundImage, Modal, Box, TextInput, NumberInput, Radio, Textarea, Select, MultiSelect } from '@mantine/core';
 import { Card, Grid, Footer, Container, Anchor, SimpleGrid, Image, Text, List } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { useMediaQuery } from '@mantine/hooks';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import facebookImage from '../../../assets/facebook-logo-facebook-icon-transparent-free-png.png';
-import Image11 from '../../../assets/IMG-0069-832x1024.jpg'
-import facebookImage1 from '../../../assets/colored-instagram-logo-new.png';
-import client from '../../../API/api';
+import facebookImage from '../assets/facebook-logo-facebook-icon-transparent-free-png.png';
+import Image11 from '../assets/IMG-0069-832x1024.jpg'
+import facebookImage1 from '../assets/colored-instagram-logo-new.png';
+// import client from '../../../API/api';
 import './page.css'
 import { MdDone } from 'react-icons/md';
 import { ImCross } from "react-icons/im";
 import { IoMdClose } from "react-icons/io";
 import { PiWarningFill } from "react-icons/pi";
 import Footer1 from './Footer1';
+import client from '../API/api';
 
 
 // import { FaSquareFacebook } from "react-icons/fa6";
@@ -35,6 +36,8 @@ const Mantine4 = () => {
   const [unsuccessful, setunSuccessful] = useState(false)
   const [emailexist, setEmailExist] = useState(false)
   const [value, setValue] = useState('active');
+  const [challenges, setChallenges] = useState([]);
+  const [healthissues, sethealthissues] = useState([]);
 
 
   const form = useForm({
@@ -43,38 +46,62 @@ const Mantine4 = () => {
       business_email: "",
       contact_no: "",
       location: "",
-      user_status: value,
-      username: "",
-      category: "",
+      // user_status: value,
+      // username: "",
+      // category: "",
       age: '',
       gender: '',
-      goal: '',
-      how_did_you_learn_about_us: '',
-      type_of_challange: ''
+      // goal: '',
+      challenges: [],
+      healthissues: [],
+      profession: ''
+      // type_of_challange: '',
+      // body_type: '',
+      // blood_test: '',
+      // any_physical_limitations: '',
+      // any_concerns: ''
+
     },
+
     validate: {
       business_email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-      contact_no: (value) =>
-        value && /^[6-9]\d{9}$/.test(value) ? null : 'Phone number must be a valid 10-digit number starting with 6-9',
+      contact_no: (value) => value && /^[6-9]\d{9}$/.test(value) ? null : 'Phone number must be a valid 10-digit number starting with 6-9',
     },
 
     transformValues: (values) => ({
       name: `${values.name}`,
       business_email: `${values.business_email}`,
       contact_no: `${values.contact_no}`,
-      user_status: `${value}`,
+      // user_status: `${value}`,
       location: `${values.location}`,
-      username: `${values.business_email}`,
-      category: 'lead',
+      // username: `${values.business_email}`,
+      // category: 'lead',
       age: values.age,
       gender: `${values.gender}`,
-      goal: `${values.goal}`,
-      how_did_you_learn_about_us: `${values.how_did_you_learn_about_us}`,
-      type_of_challange: `${values.type_of_challange}`
+      // goal: `${values.goal}`,
+      challenges: challenges,
+      healthissues: healthissues,
+      profession: `${values.profession}`,
+      // type_of_challange: `${values.type_of_challange}`,
+      // body_type: '',
+      // blood_test: '',
+      // any_physical_limitations: '',
+      // any_concerns: ''
+
     })
+
   });
 
   const handleRegistration = () => {
+    if (challenges.length === 0) {
+      form.setFieldError('challenges', 'Please select at least one challenge');
+      return; // Prevent submission
+    } if (healthissues.length === 0) {
+      form.setFieldError('healthissues', 'Please select at least one option');
+      return; // Prevent submission
+    }
+    // console.log(form.getTransformedValues());
+
     setLoader(true);
     client.post("register_user/", form.getTransformedValues())
       .then((resp) => {
@@ -101,7 +128,7 @@ const Mantine4 = () => {
           }, 1000)
         }
 
-        else if (resp.data.status === 'failed') {
+        else if (resp.data.status = 'failed') {
           // emailexist()
 
           setTimeout(() => {
@@ -121,6 +148,8 @@ const Mantine4 = () => {
       // setCheckmarkVisible(false); // Hide checkmark after 2 seconds
     }, 5000);
   }
+
+
   const handleMobileChange = (e) => {
     const value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
     if (value.length <= 10) {
@@ -135,22 +164,22 @@ const Mantine4 = () => {
       <Modal opened={successful} onClose={() => setSuccessful(false)} withCloseButton={false} centered
         padding="md"
       >
-        <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+        <Group align='center'>
           <MdDone className='icon-animation' color='rgb(0, 171, 0)' />
           <p>Submitted Successfully!</p>
 
-        </div>
+        </Group>
 
       </Modal>
 
       <Modal opened={unsuccessful} onClose={() => setunSuccessful(false)} withCloseButton={false} centered
         padding="md"
       >
-        <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+        <Group align='center'>
           <IoMdClose className='icon-animation' color='red' />
           <p>Unsuccessful Submission!</p>
 
-        </div>
+        </Group>
       </Modal>
 
 
@@ -167,15 +196,16 @@ const Mantine4 = () => {
       </Modal>
 
 
+
       <Modal closeOnClickOutside={false} opened={opened} onClose={close} title="Registration" centered size={isMobile ? "xs" : "md"}>
         <form onSubmit={handleRegistration}>
           <SimpleGrid cols={1}>
             <TextInput
-              required
+
               label="Name"
               name='name'
               placeholder="Enter name"
-
+              required
               {...form.getInputProps('name')}
 
             />
@@ -197,23 +227,16 @@ const Mantine4 = () => {
 
 
 
-            {/* <TextInput
 
-    label="Password"
-    name='password'
-    placeholder=" password"
-   
-    {...form.getInputProps('password')}
-
-/> */}
             <TextInput
-              required
+
               label="Contact No."
               name='contact_no'
               placeholder="Enter Contact No."
-
+              required
               {...form.getInputProps('contact_no')}
               onChange={handleMobileChange}
+
             />
             <TextInput
 
@@ -239,53 +262,96 @@ const Mantine4 = () => {
               </Group>
             </Radio.Group>
 
-            <Textarea maxRows={4}
-              name='goal'
-              {...form.getInputProps('goal')}
-              label='Goals'
-              required
-              placeholder='Enter here..'>
+            <TextInput
 
-            </Textarea>
-            <Select
-              name='how_did_you_learn_about_us'
-              label="How did you get to know us? "
-              placeholder="Pick one"
-              searchable
+              label="Profession"
+              name='profession'
+              placeholder="Enter Profession"
               required
+              {...form.getInputProps('profession')}
+
+            />
+            {/* 
+                  <Textarea maxRows={4} label='Goals' required name='goal' placeholder='Enter here..'
+                    {...form.getInputProps('goal')}
+                  >
+      
+                  </Textarea> */}
+            {/* <Select
+                    required
+                    name='how_did_you_learn_about_us'
+                    label="What are your current challenges to do fitness consistently?"
+                    placeholder="Pick one"
+                    searchable
+                    nothingFound="No options"
+                    data={['Lack of time', 'Where to start and How to Start', 'Not Being Consistent', 'Lack of motivation']}
+                    {...form.getInputProps('how_did_you_learn_about_us')}
+                  /> */}
+
+
+            <MultiSelect
+              required
+              label="What are your current challenges to do fitness consistently?"
+              placeholder="Select all that apply"
+              searchable
               nothingFound="No options"
-              data={['Facebook', 'Instagram Add', 'Friend refered', 'Community promotion', 'Others']}
-              {...form.getInputProps('how_did_you_learn_about_us')}
+              data={[
+                'Lack of time',
+                'Where to start and How to Start',
+                'Not Being Consistent',
+                'Lack of motivation',
+              ]}
+              value={challenges}
+              onChange={setChallenges}
+            />
+
+            <MultiSelect
+              required
+              label="Are you Facing any Health Issues (Please mention if Yes)"
+              placeholder="Select all that apply"
+              searchable
+              nothingFound="No options"
+              data={[
+                'Stree and Anxiety',
+                'Back Pain or Neck Pain',
+                'Breathing Challenges (Respiratory)',
+                'Overweight',
+                'Migraine',
+                'PCOD / PCOD / Thyroid',
+                'Others', 'None',
+
+              ]}
+              value={healthissues}
+              onChange={sethealthissues}
             />
 
 
             {/* <Radio.Group
-              name='type_of_challange'
-              label="Choose Your Journey"
-              required
-
-              {...form.getInputProps('type_of_challange')} radius='md'
-              style={{ color: 'blue' }}
-            >
-              <Group mt="xs">
-                <Radio value="100dayschallenge" label="100 Days Challenge" />
-                <Radio value="longtermjourney" label="Longterm Journey" />
-
-              </Group>
-            </Radio.Group> */}
+                    required
+                    name='type_of_challange'
+                    label="Choose Your Journey"
+      
+                    {...form.getInputProps('type_of_challange')} radius='md'
+                    style={{ color: 'blue' }}
+                  >
+                    <Group mt="xs">
+                      <Radio value="100dayschallenge" label="100 Days Challenge" />
+                      <Radio value="longtermjourney" label="Longterm Journey" />
+      
+                    </Group>
+                  </Radio.Group> */}
 
 
           </SimpleGrid>
-
           <Group position="right" mt="md">
-            <Button type='submit' fullWidth radius='md' loading={loader} bg={'#1F3469'}>Submit</Button>
+            <Button type='submit' loading={loader} bg={'#fe7032'} fullWidth radius='md'>Submit</Button>
           </Group>
         </form>
       </Modal>
 
 
       <BackgroundImage
-        src="https://wallpapercave.com/wp/wp8298483.jpg"
+        src="https://t4.ftcdn.net/jpg/13/25/21/53/360_F_1325215320_Cttu4ebE9BgwMuXRg1eq6EpbFJkVSDxE.jpg"
         style={{
           height: isMobile ? 'auto' : '100vh',
           padding: isMobile ? '2rem 0' : '2.5rem 0',
@@ -317,7 +383,7 @@ const Mantine4 = () => {
 
                 <Card
                   shadow="xl"
-                  bg="#1F3469"
+                  bg="rgb(254, 112, 50)"
                   h="auto"
                   w={isMobile ? '80vw' : '325.33px'}
                   radius="lg"
@@ -333,28 +399,27 @@ const Mantine4 = () => {
                   <CardSection>
                     <AspectRatio ratio={9 / 5} >
                       <Image
-                        src="https://images.newscientist.com/wp-content/uploads/2021/12/08150023/PRI_214108755.jpg"
+                        src="https://media.istockphoto.com/id/1898252719/photo/happy-indian-yoga-instructor-smiling-at-the-camera-while-showing-the-sukhasana-pose-to-his.jpg?s=612x612&w=0&k=20&c=yQ6t-K7GN0g8Uy6lNQ5JhYjbYmTNq3erYrT7FOhYsY4="
                         width="100%"
                         height='100%'
 
                       />
                     </AspectRatio>
                   </CardSection>
-                  <Text fz="15px" color="#FBD40B" fw="500" m="xs" >What will you learn</Text>
+                  <Text fz="15px" color="#ffffff" fw="500" m="xs" >What can you learn from this Masterclass:</Text>
 
                   <List style={{ color: 'white' }} fz="14px" m="lg">
-                    <List.Item>Customised workout and meal plans</List.Item>
-                    <List.Item>Follow-up team: daily follow-up to check with clients' progress (accountability)</List.Item>
-                    <List.Item>Weekly calls direct with the coach to discuss various health and nutrition concepts. The agenda is to ensure clients learn and implement health concepts for a lifetime.</List.Item>
-                    <List.Item>Supplement suggestions customised to the client transformation goal.</List.Item>
-                    <List.Item>WhatsApp fitness community and challenges given to clients in the community to build synergy and an environment to learn and grow.</List.Item>
+                    <List.Item>Secret 1 - Learn 4 Factors to Lead a Happy and Healthy Life</List.Item>
+                    <List.Item>Secret 2 - How Breathing Techniques Can Instantly Reduce Your Stress</List.Item>
+                    <List.Item>Secret 3 - Learn to Build a Stress-Free Yoga Routine</List.Item>
+                    {/* <List.Item>WhatsApp fitness community and challenges given to clients in the community to build synergy and an environment to learn and grow.</List.Item> */}
                   </List>
                 </Card>
 
 
                 <Card
                   shadow="xl"
-                  bg="#1F3469"
+                  bg="rgb(254, 112, 50)"
                   h="auto"
                   w={isMobile ? '80vw' : '325.33px'}
                   radius="lg"
@@ -370,30 +435,32 @@ const Mantine4 = () => {
                   <CardSection>
                     <AspectRatio ratio={9 / 5}>
                       <Image
-                        src={Image11}
+                        src={'https://static.wixstatic.com/media/d0f110_aba90c0fb1044e8ab03a8cf8f4f24ebb~mv2.jpg/v1/fill/w_980,h_552,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/d0f110_aba90c0fb1044e8ab03a8cf8f4f24ebb~mv2.jpg'}
 
                         width='100%' height="100%"
                         style={{ objectFit: 'cover' }}
                       />
                     </AspectRatio>
                   </CardSection>
-                  <Text fz="15px" color="#FBD40B" fw="500" m="xs">Challenges we delt</Text>
+                  <Text fz="15px" color="#ffffff" fw="500" m="xs">Challenges we delt</Text>
 
                   <List style={{ color: 'white' }} fz="14px" m="lg">
-                    <List.Item>Knee rehab</List.Item>
-                    <List.Item>Cricket strength and conditioning</List.Item>
+                    <List.Item>Postural Imbalances in Working Professionals</List.Item>
+                    <List.Item>Lower Back Pain & Sciatica</List.Item>
                     <List.Item>Lifestyle disorders</List.Item>
-                    <List.Item>Lower back pain and sciatica</List.Item>
-                    <List.Item>Clients with imbalanced blood lipid profiles and other deficiencies.</List.Item>
-                    <List.Item>Working proffesional facing posture imbalance</List.Item>
-                    <List.Item>Strength and conditioning to professional/weekend sport enthusiasts</List.Item>
+                    <List.Item>Stress & Anxiety Disorders</List.Item>
+                    <List.Item>Limited Flexibility & Mobility</List.Item>
+                    <List.Item>Strength & Conditioning for Sports Enthusiasts</List.Item>
+                    <List.Item>Fatigue and Lack of Discipline</List.Item>
+                    <List.Item>Hormonal Imbalances</List.Item>
+                    <List.Item>Clients with Chronic Conditions</List.Item>
                   </List>
                 </Card>
 
 
                 <Card
                   shadow="xl"
-                  bg="#1F3469"
+                  bg="rgb(254, 112, 50)"
                   h="auto"
 
                   w={isMobile ? '80vw' : '325.33px'}
@@ -410,7 +477,7 @@ const Mantine4 = () => {
                   <CardSection>
                     <AspectRatio ratio={9 / 5}>
                       <Image
-                        src="https://img.freepik.com/free-photo/front-view-young-female-sport-outfit-holding-dumbbells-white-speech-bubble_140725-83616.jpg"
+                        src="https://peachtreeyoga.com/wp-content/uploads/2016/08/sm-confused-woman-shrug-yoga-mat-dyed-hair-alternative.jpg"
                         width="100%"
                         height='100%'
 
@@ -420,15 +487,15 @@ const Mantine4 = () => {
                     </AspectRatio>
                   </CardSection>
 
-                  <Text fz="15px" color="#FBD40B" fw="500" m="xs" >
+                  <Text fz="15px" color="#ffffff" fw="500" m="xs" >
                     Have Questions?
                   </Text>
-                  <Text fz="14px" m="lg" color='white'>Not sure where to start on your fitness journey? </Text>
+                  <Text fz="14px" m="lg" color='white'>Confused about the right yoga routine for you? </Text>
 
-                  <Text fz="14px" m="lg" color='white'>Need help choosing the right membership or personal training plan?</Text>
+                  <Text fz="14px" m="lg" color='white'>Want to begin yoga but need direction?</Text>
                   {/* Centering ONLY the Button */}
                   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: isMobile ? '4rem' : '7rem', marginBottom: isMobile ? '3rem' : 'none' }}>
-                    <a href='tel:%20+91%2074165%2060259'>
+                    <a href='tel:%20+91%208555983730'>
                       <Button
                         h={isMobile ? '2.5rem' : '3rem'}
                         mt="xs"
@@ -443,7 +510,7 @@ const Mantine4 = () => {
                             boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
                             transition: 'background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
                             backgroundSize: '200%',
-                            backgroundImage: 'linear-gradient(90deg, #fbd40b, #ff9933, #fbd40b)',
+                            backgroundImage: 'linear-gradient(90deg, #fe7032,rgb(255, 183, 0), #fe7032)',
                             animation: 'glowAnimation 3s infinite',
                             '&:hover': {
                               backgroundColor: '#FBD40B',

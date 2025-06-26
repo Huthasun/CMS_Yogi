@@ -114,3 +114,42 @@ iframe:focus {
       height: 100%;
   
     }
+
+ 
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ========== Register Link ========== */
+.yoga-register-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  margin-top: 1.2rem;
+  display: inline-block;
+  /* text-decoration: underline; */
+  cursor: pointer;
+  animation: pulse 1s ease-in-out infinite;
+  transition: color 0.3s ease;
+}
+
+.yoga-register-text:hover {
+   animation:  ease-out;
+   transform: scale(1.1) ;
+}
+
+.yoga-register-text:active {
+  color: #ffd0b0;
+}
+
+

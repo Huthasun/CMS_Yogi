@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 // import LoginPage from './pages/LoginPage'
 // import { Space, Switch } from "@mantine/core";
@@ -28,21 +33,18 @@ import HCTSetNewpasswordPage from "./HCT/HCTpages/HCTSetNewpasswordPage";
 import UserManagementPage from "./HCT/HCTpages/UserManagementPage";
 import TemplatePage from "./HCT/HCTpages/TemplatePage";
 import BroadcastPage from "./HCT/HCTpages/BroadcastPage";
-import LandingPage from "./HCT/HCT components/MainPage/LandingPage";
+import LandingPage from "./MainPage/LandingPage";
 import TrackerPage from "./HCT/HCTpages/TrackerPage";
 import UserTrackerPage from "./HCT/HCTpages/UserTrackerPage";
 import PagesPage from "./HCT/HCTpages/PagesPage";
 
 function App() {
-
   // var isLoggedIn = window.localStorage.getItem("encsrftok")
   return (
-
     <div className="App">
       {/* <Test />
       <Space h={'10rem'} /> */}
       <Router>
-
         <Routes>
           {/* 
           <Route path="/green" Component={QuizScoreRed} />
@@ -69,10 +71,10 @@ function App() {
           {/* <Route path="/quiz/:courseid/:lessonid" Component={QuizPage} /> */}
 
           {/* HCT Routes*/}
-          <Route path="/" element={window.localStorage.getItem("access") ? (<Navigate to={"/dashboard"} />) : (<Navigate to={"/login"} />)} />
+          {/* <Route path="/" element={window.localStorage.getItem("access") ? (<Navigate to={"/dashboard"} />) : (<Navigate to={"/login"} />)} /> */}
 
-          <Route path ="/100daysjourney" Component ={LandingPage} />
-          <Route path="/login" Component={LoginHCTPage} />
+          <Route path="/" Component={LandingPage} />
+          {/* <Route path="/login" Component={LoginHCTPage} />
           <Route path="/forgot-password" Component={ForgetPasswordHCTPage} />
           <Route path="/set-new-password" Component={HCTSetNewpasswordPage} />
           <Route path="/dashboard" Component={DashboardHCTPage} />
@@ -81,11 +83,8 @@ function App() {
           <Route path="/broadcast" Component={BroadcastPage} />
           <Route path="/tracking/:category" Component={TrackerPage} />
           <Route path="/tracker/:username" element={<UserTrackerPage/>} />
-          <Route path="/pages" Component={PagesPage} />
-
-
+          <Route path="/pages" Component={PagesPage} /> */}
         </Routes>
-
       </Router>
     </div>
   );

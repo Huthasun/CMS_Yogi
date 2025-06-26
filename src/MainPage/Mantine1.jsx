@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { AppShell, BackgroundImage, Button, Card, Container, Flex, Footer, Text, Group, Radio, TextInput, Modal, Box, NumberInput, Transition, Overlay, SimpleGrid, Textarea, Select } from '@mantine/core';
+import { AppShell, BackgroundImage, Button, Card, Container, Flex, Footer, Text, Group, Radio, TextInput, Modal, Box, NumberInput, Transition, Overlay, SimpleGrid, Textarea, Select, MultiSelect } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import client from '../../../API/api';
+// import client from '../../../API/api';
 import './page.css'
-import '../../../../node_modules/react-toastify/dist/ReactToastify.css'
+// import '../../../../node_modules/react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer } from 'react-toastify';
 import { MdDone } from 'react-icons/md';
 import { ImCross } from "react-icons/im";
 import { IoMdClose } from "react-icons/io";
 import { PiWarningFill } from "react-icons/pi";
+import client from '../API/api';
 
 
 
@@ -27,6 +28,8 @@ const Mantine1 = () => {
   const [emailexist, setEmailExist] = useState(false)
   const [page, setPage] = useState(false)
   const [value, setValue] = useState('active');
+  const [challenges, setChallenges] = useState([]);
+  const [healthissues, sethealthissues] = useState([]);
 
 
 
@@ -36,18 +39,20 @@ const Mantine1 = () => {
       business_email: "",
       contact_no: "",
       location: "",
-      user_status: value,
-      username: "",
-      category: "",
+      // user_status: value,
+      // username: "",
+      // category: "",
       age: '',
       gender: '',
-      goal: '',
-      how_did_you_learn_about_us: '',
-      type_of_challange: '',
-      body_type: '',
-      blood_test: '',
-      any_physical_limitations: '',
-      any_concerns: ''
+      // goal: '',
+      challenges: [],
+      healthissues: [],
+      profession: ''
+      // type_of_challange: '',
+      // body_type: '',
+      // blood_test: '',
+      // any_physical_limitations: '',
+      // any_concerns: ''
 
     },
 
@@ -60,19 +65,21 @@ const Mantine1 = () => {
       name: `${values.name}`,
       business_email: `${values.business_email}`,
       contact_no: `${values.contact_no}`,
-      user_status: `${value}`,
+      // user_status: `${value}`,
       location: `${values.location}`,
-      username: `${values.business_email}`,
-      category: 'lead',
+      // username: `${values.business_email}`,
+      // category: 'lead',
       age: values.age,
       gender: `${values.gender}`,
-      goal: `${values.goal}`,
-      how_did_you_learn_about_us: `${values.how_did_you_learn_about_us}`,
-      type_of_challange: `${values.type_of_challange}`,
-      body_type: '',
-      blood_test: '',
-      any_physical_limitations: '',
-      any_concerns: ''
+      // goal: `${values.goal}`,
+      challenges: challenges,
+      healthissues: healthissues,
+      profession: `${values.profession}`,
+      // type_of_challange: `${values.type_of_challange}`,
+      // body_type: '',
+      // blood_test: '',
+      // any_physical_limitations: '',
+      // any_concerns: ''
 
     })
 
@@ -80,6 +87,15 @@ const Mantine1 = () => {
 
 
   const handleRegistration = () => {
+    if (challenges.length === 0) {
+      form.setFieldError('challenges', 'Please select at least one challenge');
+      return; // Prevent submission
+    } if (healthissues.length === 0) {
+      form.setFieldError('healthissues', 'Please select at least one option');
+      return; // Prevent submission
+    }
+    // console.log(form.getTransformedValues());
+
     setLoader(true);
     client.post("register_user/", form.getTransformedValues())
       .then((resp) => {
@@ -308,20 +324,67 @@ const Mantine1 = () => {
               </Group>
             </Radio.Group>
 
+            <TextInput
+
+              label="Profession"
+              name='profession'
+              placeholder="Enter Profession"
+              required
+              {...form.getInputProps('profession')}
+
+            />
+            {/* 
             <Textarea maxRows={4} label='Goals' required name='goal' placeholder='Enter here..'
               {...form.getInputProps('goal')}
             >
 
-            </Textarea>
-            <Select
+            </Textarea> */}
+            {/* <Select
               required
               name='how_did_you_learn_about_us'
-              label="How did you get to know us? "
+              label="What are your current challenges to do fitness consistently?"
               placeholder="Pick one"
               searchable
               nothingFound="No options"
-              data={['Facebook', 'Instagram Ad', 'Friend refered', 'Community promotion', 'Others']}
+              data={['Lack of time', 'Where to start and How to Start', 'Not Being Consistent', 'Lack of motivation']}
               {...form.getInputProps('how_did_you_learn_about_us')}
+            /> */}
+
+
+            <MultiSelect
+              required
+              label="What are your current challenges to do fitness consistently?"
+              placeholder="Select all that apply"
+              searchable
+              nothingFound="No options"
+              data={[
+                'Lack of time',
+                'Where to start and How to Start',
+                'Not Being Consistent',
+                'Lack of motivation',
+              ]}
+              value={challenges}
+              onChange={setChallenges}
+            />
+
+            <MultiSelect
+              description='Select "None" if no health issues'
+              required
+              label="Are you Facing any Health Issues (Please mention if Yes)"
+              placeholder="Select all that apply"
+              searchable
+              nothingFound="No options"
+              data={[
+                'Stree and Anxiety',
+                'Back Pain or Neck Pain',
+                'Breathing Challenges (Respiratory)',
+                'Overweight',
+                'Migraine',
+                'PCOD / PCOD / Thyroid',
+                'Others', 'None'
+              ]}
+              value={healthissues}
+              onChange={sethealthissues}
             />
 
 
@@ -343,7 +406,7 @@ const Mantine1 = () => {
 
           </SimpleGrid>
           <Group position="right" mt="md">
-            <Button type='submit' loading={loader} bg={'#1F3469'} fullWidth radius='md'>Submit</Button>
+            <Button type='submit' loading={loader} bg={'#fe7032'} fullWidth radius='md'>Submit</Button>
           </Group>
         </form>
       </Modal>
@@ -353,8 +416,8 @@ const Mantine1 = () => {
       </Modal> */}
 
       <BackgroundImage
-        src="https://healthcoachsaiteja.com/wp-content/uploads/2022/11/IMG-1431-scaled.jpg"
-        mt="xl"
+        src="https://cdn10.phillymag.com/wp-content/uploads/sites/3/2019/03/breathing-and-meditation-main.jpg"
+        mt="xs"
         // h={isMobile ? "80vh" : "90vh"}
         h='auto'
         style={{ backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -365,7 +428,7 @@ const Mantine1 = () => {
               <Footer
                 fixed
                 height={isMobile ? 60 : 80}
-                bg="#1F3469"
+                bg="#2d5128"
                 withBorder={false}
                 style={{
                   width: '100%',
@@ -389,7 +452,7 @@ const Mantine1 = () => {
                     <Text
                       sx={{
                         fontFamily: '"Poppins", Sans-serif',
-                        background: 'linear-gradient(90deg, #fff, #fbd40b, #fff)',
+                        background: 'linear-gradient(90deg, #fe7032, #ffffff, #fe7032)',
                         backgroundSize: '200%',
                         backgroundClip: 'text',
                         WebkitBackgroundClip: 'text',
@@ -427,11 +490,11 @@ const Mantine1 = () => {
                         boxShadow: '0 0 20px rgba(255, 255, 255, 0.6)',
                         transition: 'background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease',
                         backgroundSize: '200%',
-                        backgroundImage: 'linear-gradient(90deg, #fbd40b, #ff9933, #fbd40b)',
+                        backgroundImage: 'linear-gradient(90deg, #fe7032,rgb(255, 183, 0), #fe7032)',
                         animation: 'glowAnimation 3s infinite',
                         '&:hover': {
                           backgroundColor: '#FBD40B',
-                          boxShadow: '0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 165, 0, 0.7)',
+                          boxShadow: '0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px #fe7032',
                           transform: 'scale(1.05)',
                         },
                       },
@@ -462,8 +525,8 @@ const Mantine1 = () => {
             <Flex mt={isMobile ? '4rem' : '5rem'} mb={isMobile ? '4rem' : '5rem'} justify="center" align="center">
               <Card
                 h={isMobile ? '22rem' : '30rem'}
-                w={isMobile ? '90vw' : '50rem'}
-                bg="#1F3469"
+                w={isMobile ? '90vw' : '65rem'}
+                bg="#fe7032"
                 radius="lg"
                 p={isMobile ? '1rem' : '2rem'}
                 style={{
@@ -482,7 +545,7 @@ const Mantine1 = () => {
                   lh="1.4"
 
                 >
-                  100 Days Fitness Challenge
+                  Stress-Free Yoga Masterclass
                 </Text>
                 <Text
                   style={{ fontFamily: '"Poppins", Sans-serif' }}
@@ -490,25 +553,20 @@ const Mantine1 = () => {
                   color="white"
                   mt="sm"
                 >
-                  Get Fit to "LEAD"
+                  Discover the Secret to lead a Stress-Free Life
+
                 </Text>
-                <Text
-                  style={{
-                    fontFamily: '"Poppins", Sans-serif',
-                    cursor: 'pointer',
-                    display: 'inline-block',
-                    marginTop: '0.5rem',
-                  }}
+                <Text className='yoga-register-text'
                   component="a"
                   onClick={() => {
                     open()
                     form.reset()
                   }}
-                  color="#FBD40B"
+                  color="dark"
                   fz="18px"
                   fw={600}
                 >
-                  Join Here
+                  Register Here
                 </Text>
               </Card>
             </Flex>
