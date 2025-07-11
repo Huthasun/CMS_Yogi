@@ -4,14 +4,14 @@ import { Card, Image, Text, createStyles, getStylesRef } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import Autoplay from 'embla-carousel-autoplay';
 
-import Image1 from '../assets/session-1.jpeg';
-import Image2 from '../assets/session-2.jpeg';
-import Image3 from '../assets/session-3.jpeg';
-import Image4 from '../assets/session-4.jpeg';
-import Image5 from '../assets/session-5.jpeg';
-import Image6 from '../assets/session-6.jpeg';
-import Image7 from '../assets/session-7.jpeg';
-import Image8 from '../assets/session-8.jpeg';
+import Image1 from '../assets/session-1.png';
+import Image2 from '../assets/session-2.png';
+import Image3 from '../assets/session-3.png';
+import Image4 from '../assets/session-4.png';
+import Image5 from '../assets/session-5.png';
+import Image6 from '../assets/session-6.png';
+import Image7 from '../assets/session-7.png';
+import Image8 from '../assets/session-8.png';
 
 const useStyles = createStyles(() => ({
     controls: {
