@@ -16,6 +16,10 @@ import { IoMdClose } from "react-icons/io";
 import { PiWarningFill } from "react-icons/pi";
 import Footer1 from './Footer1';
 import client from '../API/api';
+import Yoga2 from '../assets/yoga 2.jpeg'
+import Yoga3 from '../assets/yoga 3.jpeg'
+
+
 
 
 // import { FaSquareFacebook } from "react-icons/fa6";
@@ -399,7 +403,7 @@ const Mantine4 = () => {
                   <CardSection>
                     <AspectRatio ratio={9 / 5} >
                       <Image
-                        src="https://media.istockphoto.com/id/1898252719/photo/happy-indian-yoga-instructor-smiling-at-the-camera-while-showing-the-sukhasana-pose-to-his.jpg?s=612x612&w=0&k=20&c=yQ6t-K7GN0g8Uy6lNQ5JhYjbYmTNq3erYrT7FOhYsY4="
+                        src={Yoga3}
                         width="100%"
                         height='100%'
 
@@ -435,8 +439,7 @@ const Mantine4 = () => {
                   <CardSection>
                     <AspectRatio ratio={9 / 5}>
                       <Image
-                        src={'https://static.wixstatic.com/media/d0f110_aba90c0fb1044e8ab03a8cf8f4f24ebb~mv2.jpg/v1/fill/w_980,h_552,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/d0f110_aba90c0fb1044e8ab03a8cf8f4f24ebb~mv2.jpg'}
-
+                        src={Yoga2}
                         width='100%' height="100%"
                         style={{ objectFit: 'cover' }}
                       />
