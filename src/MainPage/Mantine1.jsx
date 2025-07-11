@@ -416,7 +416,7 @@ const Mantine1 = () => {
       </Modal> */}
 
       <BackgroundImage
-        src="https://cdn10.phillymag.com/wp-content/uploads/sites/3/2019/03/breathing-and-meditation-main.jpg"
+        src="https://plus.unsplash.com/premium_photo-1676815865390-8e3a9336f64b?fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8eW9nYSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D&ixlib=rb-4.1.0&q=60&w=3000"
         mt="xs"
         // h={isMobile ? "80vh" : "90vh"}
         h='auto'

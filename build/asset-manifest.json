@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1b8e8581.css",
+    "main.js": "/static/js/main.4114632e.js",
+    "static/media/Certified-supplement-coach.png": "/static/media/Certified-supplement-coach.f1d3d8e8341272d5dd02.png",
+    "static/media/Diploma-in-nutrition.png": "/static/media/Diploma-in-nutrition.42ad850d10e70a4eaf7f.png",
+    "static/media/Strength-and-conditioning.png": "/static/media/Strength-and-conditioning.2237e0e531aeda55a6c8.png",
+    "static/media/sports-injuries.png": "/static/media/sports-injuries.dc5624d96136e4b38948.png",
+    "static/media/funtional-and-group.png": "/static/media/funtional-and-group.8f7c4aefb24fd852cd28.png",
+    "static/media/Ace-certificate.png": "/static/media/Ace-certificate.28afe0aac5618eb889c0.png",
+    "static/media/yogesh.png": "/static/media/yogesh.d7135e3a5ff83a978d3d.png",
+    "static/media/yoga2.jpeg": "/static/media/yoga2.355113da0427a9c7d230.jpeg",
+    "static/media/yoga3.jpeg": "/static/media/yoga3.ae714bc64c1c61e21760.jpeg",
+    "static/media/colored-instagram-logo-new.png": "/static/media/colored-instagram-logo-new.179968904767d9eff9a7.png",
+    "static/media/yogalogo.png": "/static/media/yogalogo.6fa465b60b424868433c.png",
+    "static/media/IMG-0069-832x1024.jpg": "/static/media/IMG-0069-832x1024.d62e51f484f5e04a5e05.jpg",
+    "static/media/gmail-logo-main-icon-1.png": "/static/media/gmail-logo-main-icon-1.d354b44347698f22b93a.png",
+    "static/media/facebook-logo-facebook-icon-transparent-free-png.png": "/static/media/facebook-logo-facebook-icon-transparent-free-png.7adffae62ed4031b6b5c.png",
+    "static/media/market1.png": "/static/media/market1.bf9499bfe63c08472e6a.png",
+    "static/media/market.png": "/static/media/market.6a0b452fb4a19ae4d9b7.png",
+    "index.html": "/index.html",
+    "main.1b8e8581.css.map": "/static/css/main.1b8e8581.css.map",
+    "main.4114632e.js.map": "/static/js/main.4114632e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b8e8581.css",
+    "static/js/main.4114632e.js"
+  ]
+}
