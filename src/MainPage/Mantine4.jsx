@@ -16,8 +16,8 @@ import { IoMdClose } from "react-icons/io";
 import { PiWarningFill } from "react-icons/pi";
 import Footer1 from './Footer1';
 import client from '../API/api';
-import Yoga2 from '../assets/yoga2.jpeg'
-import Yoga3 from '../assets/yoga3.jpeg'
+import Yoga2 from '../assets/yoga2.png'
+import Yoga3 from '../assets/yoga3.png'
 
 
 

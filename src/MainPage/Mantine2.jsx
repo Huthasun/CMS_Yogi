@@ -50,19 +50,20 @@ const Mantine2 = () => {
               fw="bold"
               align={isMobile ? 'center' : 'left'}
             >
-              Dedicate 90 minutes to yoga, and gift yourself a lifetime of clarity and calm!
+              "Gift yourself a lifetime of clarity and calm. all it takes is 90 minutes of yoga!"
             </Text>
             <Text
               className="yoga-description-text"
-              style={{ fontFamily: '"Roboto Condensed", Sans-serif' }}
+              style={{  fontFamily: '"Poppins", Sans-serif'  }}
               fz={isMobile ? '14px' : '18px'}
               fw="300"
               mt="md"
               align={isMobile ? 'center' : 'left'}
             >
-              Just 90 minutes of yoga a day can bring lasting calm to your busy life. Through mindful movement,
-              breathwork, and meditation, yoga helps release stress, improve focus, and restore inner balance.
-              It’s not just exercise—it’s daily self-care for your mind and body. Start today, and feel the difference from within.
+              Yoga a day can transform your life -
+With gentle movements, deep breathing, and quiet meditation, yoga melts away stress, sharpens focus, and brings peace to your busy day.
+It’s more than a workout—it’s a daily ritual of care for your body and mind.
+Start today… and feel the calm grow from within.
             </Text>
           </Flex>
           <Flex justify="center" className="yoga-image-section">
